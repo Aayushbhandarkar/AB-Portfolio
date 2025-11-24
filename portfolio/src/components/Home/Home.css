@@ -105,9 +105,15 @@
   text-align: center;
 }
 
-/* Name parts - default inline for desktop */
+/* Name parts - default inline for desktop with proper spacing */
 .name-first,
 .name-last {
+  display: inline;
+}
+
+/* Add proper spacing between first and last name on desktop */
+.name-first::after {
+  content: '\00a0\00a0'; /* Two non-breaking spaces for better spacing */
   display: inline;
 }
 
@@ -259,7 +265,7 @@
     line-height: 1.1;
   }
   
-  /* Stack name on mobile */
+  /* Stack name on mobile and remove the space */
   .name-first,
   .name-last {
     display: block;
