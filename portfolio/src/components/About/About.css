@@ -1,0 +1,434 @@
+/* About.css */
+:root {
+  --bg: #000;
+  --muted: #dad8cf;
+  --divider: #222;
+  --thin: #1f1f1f;
+}
+
+.services-wrapper {
+  background: var(--bg);
+  padding: 140px 7%;
+  color: var(--muted);
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+.services-title {
+  font-size: 7rem;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin: 0;
+  color: var(--muted);
+}
+
+.services-right {
+  max-width: 550px;
+  position: relative;
+}
+
+.services-mini {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-bottom: 18px;
+  letter-spacing: 1px;
+}
+
+.services-desc {
+  font-size: 1.2rem;
+  line-height: 1.65;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* Line */
+.line {
+  width: 100%;
+  height: 1px;
+  background: var(--divider);
+  margin: 60px 0;
+  position: relative;
+  z-index: 1;
+  transform-origin: left center;
+}
+
+/* SERVICE BLOCK */
+.service-block {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+  padding: 40px 0;
+}
+
+/* Left number - STATIC */
+.service-left {
+  font-size: 2.8rem;
+  opacity: 0.4;
+  font-weight: 600;
+  width: 180px;
+}
+
+.service-number {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Right content */
+.service-right {
+  flex: 1;
+}
+
+.service-title {
+  font-size: 3rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+  color: var(--muted);
+}
+
+.service-content {
+  /* Normal visible content */
+}
+
+.service-text {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  margin-bottom: 35px;
+  max-width: 740px;
+}
+
+/* tech list */
+.tech-list {
+  width: 100%;
+}
+
+.tech-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 1.2rem;
+  margin: 12px 0;
+  color: var(--muted);
+}
+
+.tech-row span {
+  opacity: 0.5;
+  width: 28px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* small divider inside block */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--thin);
+  margin: 12px 0;
+}
+
+/* SKILLS SECTION */
+.skills-section {
+  margin-top: 80px;
+}
+
+.skills-header {
+  margin-bottom: 40px;
+}
+
+.skills-title {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.1;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 60px;
+  margin: 50px 0;
+}
+
+.skill-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-category {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 25px 0;
+  color: var(--muted);
+  opacity: 0.8;
+  letter-spacing: 0.5px;
+}
+
+.skill-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.skill-item {
+  font-size: 1.1rem;
+  color: var(--muted);
+  opacity: 0.85;
+  line-height: 1.4;
+  transition: opacity 0.3s ease;
+}
+
+.skill-item:hover {
+  opacity: 1;
+}
+
+/* ABOUT DESCRIPTION WITH IMAGE LAYOUT */
+.about-description-with-image {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 80px;
+  align-items: start;
+  margin-top: 60px;
+}
+
+.description-content {
+  width: 100%;
+}
+
+.description-text {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin: 0 0 50px 0;
+  max-width: 800px;
+  font-weight: 500;
+}
+
+.group-section {
+  margin-top: 40px;
+}
+
+.group-label {
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.7;
+  margin: 0 0 20px 0;
+  letter-spacing: 1px;
+}
+
+.group-description {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  opacity: 0.85;
+  margin: 0 0 25px 0;
+  max-width: 800px;
+}
+
+/* PROFILE IMAGE - RIGHT SIDE OF DESCRIPTION */
+.description-image-right {
+  position: sticky;
+  top: 140px;
+  height: fit-content;
+}
+
+.profile-image-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  background: #111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.6s ease;
+}
+
+.profile-image-container:hover .profile-image {
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 1200px) {
+  .services-wrapper {
+    padding: 120px 5%;
+  }
+  
+  .skills-title {
+    font-size: 3.5rem;
+  }
+  
+  .about-description-with-image {
+    grid-template-columns: 1fr 350px;
+    gap: 60px;
+  }
+  
+  .profile-image-container {
+    height: 450px;
+  }
+}
+
+@media (max-width: 980px) {
+  .services-header {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .services-title {
+    font-size: 4.5rem;
+  }
+
+  .service-block {
+    gap: 30px;
+    padding: 28px 0;
+  }
+
+  .service-left {
+    width: 120px;
+    font-size: 2.4rem;
+  }
+
+  .service-title {
+    font-size: 2.2rem;
+  }
+  
+  .skills-title {
+    font-size: 3rem;
+  }
+  
+  .skills-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .about-description-with-image {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .description-image-right {
+    position: static;
+    order: -1;
+    margin-bottom: 40px;
+  }
+  
+  .profile-image-container {
+    height: 400px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .services-wrapper {
+    padding: 80px 5%;
+  }
+
+  .services-title {
+    font-size: 3.5rem;
+  }
+  
+  .skills-title {
+    font-size: 2.5rem;
+  }
+  
+  .description-text {
+    font-size: 1.2rem;
+  }
+  
+  .profile-image-container {
+    height: 350px;
+  }
+}
+
+@media (max-width: 560px) {
+  .services-title {
+    font-size: 2.8rem;
+  }
+
+  .service-left {
+    display: none;
+  }
+
+  .service-block {
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .service-title {
+    font-size: 2rem;
+  }
+
+  .service-text {
+    font-size: 1rem;
+  }
+
+  .tech-row {
+    font-size: 1rem;
+  }
+  
+  .skills-title {
+    font-size: 2rem;
+  }
+  
+  .skill-category {
+    font-size: 1rem;
+  }
+  
+  .skill-item {
+    font-size: 1rem;
+  }
+  
+  .description-text {
+    font-size: 1.1rem;
+  }
+  
+  .group-description {
+    font-size: 1rem;
+  }
+  
+  .profile-image-container {
+    height: 300px;
+  }
+}
+
+@media (max-width: 380px) {
+  .services-wrapper {
+    padding: 60px 5%;
+  }
+  
+  .services-title {
+    font-size: 2.2rem;
+  }
+  
+  .service-title {
+    font-size: 1.8rem;
+  }
+  
+  .skills-title {
+    font-size: 1.8rem;
+  }
+  
+  .profile-image-container {
+    height: 250px;
+  }
+}
