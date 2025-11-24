@@ -75,7 +75,10 @@ function Home() {
         {/* Main Title */}
         <h1 className="heroTitle" ref={titleRef}>
           HEYA,
-          <span className="highlightName">AYUSH BHANDARKAR</span>
+          <span className="highlightName">
+            <span className="name-first">AYUSH</span>
+            <span className="name-last">BHANDARKAR</span>
+          </span>
           HERE
         </h1>
 
