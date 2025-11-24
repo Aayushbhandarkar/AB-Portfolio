@@ -299,8 +299,9 @@
     letter-spacing: 2.5px;
   }
   
+  /* Bottom shape mobile optimization */
   .bottomShape {
-    height: 60px;
+    height: 50px;
     clip-path: polygon(6% 0, 94% 0, 100% 100%, 0 100%);
   }
 }
@@ -337,6 +338,11 @@
   
   .typing-cursor {
     font-size: 1.1rem;
+  }
+  
+  /* Further reduce bottom shape on smaller devices */
+  .bottomShape {
+    height: 45px;
   }
 }
 
@@ -394,8 +400,10 @@
     display: none;
   }
   
+  /* Optimize bottom shape for mobile */
   .bottomShape {
-    height: 50px;
+    height: 40px;
+    clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%);
   }
 }
 
@@ -430,6 +438,11 @@
   .typing-cursor {
     font-size: 0.9rem;
   }
+  
+  /* Smallest bottom shape for very small devices */
+  .bottomShape {
+    height: 35px;
+  }
 }
 
 @media (max-width: 360px) {
@@ -448,6 +461,10 @@
   
   .hero-content {
     padding: 0 15px;
+  }
+  
+  .bottomShape {
+    height: 30px;
   }
 }
 
