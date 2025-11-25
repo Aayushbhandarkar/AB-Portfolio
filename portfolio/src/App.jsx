@@ -1,19 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react'
 import Nav from './components/Nav/Nav'
+import OtherPagesNav from './components/Nav/OtherPagesNav'
 import Home from './components/Home/Home'
-import About from './components/About/About'
+import Services from './components/Services/Services'
 import Project from './components/Projects/Project'
+import About from './components/About/About'
 import Contact from './components/Contact/Contact'
 
 function App() {
 
   const homeRef = useRef(null);
-  const [showNav, setShowNav] = useState(true);
+  const [showWhiteNav, setShowWhiteNav] = useState(true);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        setShowNav(entries[0].isIntersecting);
+        setShowWhiteNav(entries[0].isIntersecting);
       },
       { threshold: 0.3 }
     );
@@ -27,19 +29,26 @@ function App() {
 
   return (
     <>
-      {/* Navbar only shows on HOME */}
-      {showNav && <Nav />}
+      {/* White Navbar only shows on HOME */}
+      {showWhiteNav && <Nav />}
+      
+      {/* Circle Hamburger Navbar shows on ALL OTHER PAGES */}
+      {!showWhiteNav && <OtherPagesNav />}
 
       <div id="home" ref={homeRef}>
         <Home />
       </div>
 
-      <div id="about">
-        <About />
+      <div id="services">
+        <Services />
       </div>
 
       <div id="projects">
         <Project />
+      </div>
+
+      <div id="about">
+        <About />
       </div>
 
       <div id="contact">

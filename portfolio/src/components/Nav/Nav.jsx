@@ -37,12 +37,12 @@ function Nav() {
           </Link>
 
           <Link 
-            to="about" 
+            to="services" 
             smooth={true} 
             duration={500} 
             offset={-80}
           >
-            <li>About</li>
+            <li>Services</li>
           </Link>
 
           <Link 
@@ -52,6 +52,15 @@ function Nav() {
             offset={-80}
           >
             <li>Projects</li>
+          </Link>
+
+          <Link 
+            to="about" 
+            smooth={true} 
+            duration={500} 
+            offset={-80}
+          >
+            <li>About</li>
           </Link>
 
           <Link 
@@ -102,13 +111,13 @@ function Nav() {
             </Link>
 
             <Link 
-              to="about" 
+              to="services" 
               smooth={true} 
               duration={500} 
               offset={-80}
               onClick={closeMenu}
             >
-              <li>About</li>
+              <li>Services</li>
             </Link>
 
             <Link 
@@ -119,6 +128,16 @@ function Nav() {
               onClick={closeMenu}
             >
               <li>Projects</li>
+            </Link>
+
+            <Link 
+              to="about" 
+              smooth={true} 
+              duration={500} 
+              offset={-80}
+              onClick={closeMenu}
+            >
+              <li>About</li>
             </Link>
 
             <Link 

@@ -1,4 +1,3 @@
-/* About.css */
 :root {
   --bg: #000;
   --muted: #dad8cf;
@@ -6,7 +5,7 @@
   --thin: #1f1f1f;
 }
 
-.services-wrapper {
+.about-wrapper {
   background: var(--bg);
   padding: 140px 7%;
   color: var(--muted);
@@ -15,42 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   overflow: hidden;
-}
-
-/* Header */
-.services-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-}
-
-.services-title {
-  font-size: 7rem;
-  font-weight: 700;
-  letter-spacing: -2px;
-  margin: 0;
-  color: var(--muted);
-}
-
-.services-right {
-  max-width: 550px;
-  position: relative;
-}
-
-.services-mini {
-  font-size: 0.9rem;
-  opacity: 0.6;
-  margin-bottom: 18px;
-  letter-spacing: 1px;
-}
-
-.services-desc {
-  font-size: 1.2rem;
-  line-height: 1.65;
-  opacity: 0.85;
-  margin: 0;
 }
 
 /* Line */
@@ -64,83 +27,9 @@
   transform-origin: left center;
 }
 
-/* SERVICE BLOCK */
-.service-block {
-  display: flex;
-  gap: 80px;
-  align-items: flex-start;
-  position: relative;
-  z-index: 2;
-  padding: 40px 0;
-}
-
-/* Left number - STATIC */
-.service-left {
-  font-size: 2.8rem;
-  opacity: 0.4;
-  font-weight: 600;
-  width: 180px;
-}
-
-.service-number {
-  font-variant-numeric: tabular-nums;
-}
-
-/* Right content */
-.service-right {
-  flex: 1;
-}
-
-.service-title {
-  font-size: 3rem;
-  font-weight: 600;
-  margin: 0 0 20px 0;
-  color: var(--muted);
-}
-
-.service-content {
-  /* Normal visible content */
-}
-
-.service-text {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  opacity: 0.85;
-  margin-bottom: 35px;
-  max-width: 740px;
-}
-
-/* tech list */
-.tech-list {
-  width: 100%;
-}
-
-.tech-row {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 1.2rem;
-  margin: 12px 0;
-  color: var(--muted);
-}
-
-.tech-row span {
-  opacity: 0.5;
-  width: 28px;
-  font-variant-numeric: tabular-nums;
-}
-
-/* small divider inside block */
-.divider {
-  width: 100%;
-  height: 1px;
-  background: var(--thin);
-  margin: 12px 0;
-}
-
 /* SKILLS SECTION */
 .skills-section {
-  margin-top: 80px;
+  margin-top: 0;
 }
 
 .skills-header {
@@ -269,7 +158,7 @@
 
 /* Responsive tweaks */
 @media (max-width: 1200px) {
-  .services-wrapper {
+  .about-wrapper {
     padding: 120px 5%;
   }
   
@@ -288,29 +177,6 @@
 }
 
 @media (max-width: 980px) {
-  .services-header {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .services-title {
-    font-size: 4.5rem;
-  }
-
-  .service-block {
-    gap: 30px;
-    padding: 28px 0;
-  }
-
-  .service-left {
-    width: 120px;
-    font-size: 2.4rem;
-  }
-
-  .service-title {
-    font-size: 2.2rem;
-  }
-  
   .skills-title {
     font-size: 3rem;
   }
@@ -339,12 +205,8 @@
 }
 
 @media (max-width: 768px) {
-  .services-wrapper {
+  .about-wrapper {
     padding: 80px 5%;
-  }
-
-  .services-title {
-    font-size: 3.5rem;
   }
   
   .skills-title {
@@ -361,31 +223,6 @@
 }
 
 @media (max-width: 560px) {
-  .services-title {
-    font-size: 2.8rem;
-  }
-
-  .service-left {
-    display: none;
-  }
-
-  .service-block {
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .service-title {
-    font-size: 2rem;
-  }
-
-  .service-text {
-    font-size: 1rem;
-  }
-
-  .tech-row {
-    font-size: 1rem;
-  }
-  
   .skills-title {
     font-size: 2rem;
   }
@@ -412,16 +249,8 @@
 }
 
 @media (max-width: 380px) {
-  .services-wrapper {
+  .about-wrapper {
     padding: 60px 5%;
-  }
-  
-  .services-title {
-    font-size: 2.2rem;
-  }
-  
-  .service-title {
-    font-size: 1.8rem;
   }
   
   .skills-title {
