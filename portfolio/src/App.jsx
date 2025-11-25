@@ -6,6 +6,7 @@ import Services from './components/Services/Services'
 import Project from './components/Projects/Project'
 import About from './components/About/About'
 import Contact from './components/Contact/Contact'
+import Footer from './components/Footer/Footer'
 
 function App() {
 
@@ -54,6 +55,9 @@ function App() {
       <div id="contact">
         <Contact />
       </div>
+
+      {/* Footer added here - will show on all pages */}
+      <Footer />
     </>
   )
 }

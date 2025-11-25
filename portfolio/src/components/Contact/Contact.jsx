@@ -12,7 +12,6 @@ function Contact() {
   const inputsRef = useRef([]);
   const btnRef = useRef(null);
   const bgVideoRef = useRef(null);
-  const socialLinksRef = useRef(null);
 
   // helper to collect inputs
   const addInput = (el) => {
@@ -61,18 +60,6 @@ function Contact() {
         ease: "power2.out",
       });
 
-      // social links animation
-      if (socialLinksRef.current) {
-        gsap.from(socialLinksRef.current.children, {
-          y: 20,
-          opacity: 0,
-          duration: 0.6,
-          stagger: 0.1,
-          delay: 0.7,
-          ease: "power2.out",
-        });
-      }
-
       // button reveal
       gsap.from(btnRef.current, {
         y: 10,
@@ -114,7 +101,7 @@ function Contact() {
       />
 
       <h1 className="contact-title" ref={titleRef}>
-        BUILDING SOMETHING COOL? <span className="break">LET’S TALK</span>
+        BUILDING SOMETHING COOL? <span className="break">LET'S TALK</span>
       </h1>
 
       <div className="contact-form-wrap" ref={formRef} role="region" aria-labelledby="contact-heading">
@@ -156,42 +143,6 @@ function Contact() {
             Send Message
           </button>
         </form>
-
-        {/* Contact Info & Social Links */}
-        <div className="contact-info" ref={socialLinksRef}>
-          <div className="contact-details">
-            <div className="contact-item">
-              <i className="fa-solid fa-envelope"></i>
-              <span>ayushbhandarkar7@gmail.com</span>
-            </div>
-            <div className="contact-item">
-              <i className="fa-solid fa-phone"></i>
-              <span>+91 7767934036</span>
-            </div>
-          </div>
-
-          <div className="social-links">
-            <a 
-              href="https://github.com/Aayushbhandarkar" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-            >
-              <i className="fa-brands fa-github"></i>
-              <span>GitHub</span>
-            </a>
-
-            <a 
-              href="https://www.linkedin.com/in/ayush-bhandarkar-555730286/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              <i className="fa-brands fa-linkedin"></i>
-              <span>LinkedIn</span>
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   );
