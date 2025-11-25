@@ -1,3 +1,4 @@
+/* WHITE NAVBAR - DESKTOP STYLE SAME */
 .navBar {
   width: 100%;
   height: 80px;
@@ -25,6 +26,7 @@
   cursor: pointer;
   font-weight: 600;
   transition: 0.3s ease;
+  color: #000;
 }
 
 .centerMenu li:hover {
@@ -33,13 +35,14 @@
 
 /* Stylish Resume text */
 .resumeBtn {
-  background: linear-gradient(to right, #667907, #ffffff);
+  background: linear-gradient(to right, #667907, #000000);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border-bottom: 2px solid #5b6003;
+  cursor: pointer;
 }
 
-/* Mobile Hamburger Menu Button - PERFECT POSITION */
+/* Mobile Hamburger Menu Button - NORMAL HAMBURGER (NO CIRCLE) */
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
@@ -49,7 +52,7 @@
   height: 30px;
   cursor: pointer;
   position: absolute;
-  right: 20px; /* Perfect right position */
+  right: 20px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 10000;
@@ -62,8 +65,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 20px;
-  height: 15px;
+  width: 25px;
+  height: 18px;
   transition: all 0.3s ease;
 }
 
@@ -79,7 +82,7 @@
 
 /* Hamburger Animation */
 .hamburger.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
+  transform: rotate(45deg) translate(6px, 6px);
 }
 
 .hamburger.active span:nth-child(2) {
@@ -87,105 +90,323 @@
 }
 
 .hamburger.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
+  transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Mobile Menu Overlay */
+/* Mobile Menu Overlay - OTHERNAVBAR STYLE */
 .mobile-menu-overlay {
   position: fixed;
   top: 0;
   right: -100%;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0);
   z-index: 9998;
-  transition: right 0.3s ease;
-  backdrop-filter: blur(5px);
+  transition: all 0.6s cubic-bezier(0.77, 0, 0.175, 1);
+  backdrop-filter: blur(0px);
 }
 
 .mobile-menu-overlay.active {
   right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
 }
 
 .mobile-menu-content {
   position: absolute;
   top: 0;
   right: 0;
-  width: 280px;
+  width: 100%;
   height: 100%;
-  background: #f4f3fc;
-  padding: 80px 30px 30px 30px;
+  background: rgba(15, 15, 15, 0.7);
+  padding: 80px 40px 40px 40px;
   display: flex;
   flex-direction: column;
-  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+  overflow-y: auto;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
 }
 
-.mobile-menu-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+/* Animated Background Elements */
+.menu-bg-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
 }
 
-.mobile-menu-header h3 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #000;
-  margin: 0;
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.03;
+  animation: floatBlob 12s ease-in-out infinite;
 }
 
+.blob-1 {
+  width: 400px;
+  height: 400px;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  top: -150px;
+  right: -150px;
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  width: 300px;
+  height: 300px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  bottom: -100px;
+  left: 10%;
+  animation-delay: -6s;
+}
+
+@keyframes floatBlob {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translateY(-30px) rotate(180deg) scale(1.05);
+  }
+}
+
+/* Close Button - VISIBLE AND CLEAR */
 .close-btn {
-  font-size: 2rem;
-  font-weight: 300;
-  color: #000;
+  position: absolute;
+  top: 30px;
+  right: 30px;
   cursor: pointer;
   line-height: 1;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10001;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .close-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(90deg);
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
 }
 
+.close-icon {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+
+.close-icon span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+}
+
+.close-icon span:first-child {
+  transform: rotate(45deg);
+}
+
+.close-icon span:last-child {
+  transform: rotate(-45deg);
+}
+
+.close-btn:hover .close-icon span {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* Navigation Links Container */
+.nav-links-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+}
+
+/* Mobile Menu List - OTHERNAVBAR STYLE */
 .mobile-menu-list {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 2px;
+  width: auto;
 }
 
 .mobile-menu-list li {
   list-style: none;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #000;
   cursor: pointer;
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 8px 0;
+  display: flex;
+  align-items: center;
   transition: all 0.3s ease;
+  position: relative;
+  opacity: 0;
+  transform: translateX(20px);
+  border: none;
+  background: none;
 }
 
 .mobile-menu-list li:hover {
-  color: #667907;
-  transform: translateX(10px);
+  transform: translateX(-3px);
 }
 
-.mobile-resume-btn {
-  background: linear-gradient(to right, #667907, #505050);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  border-bottom: 2px solid #667907 !important;
+.mobile-menu-list li:hover .menu-text {
+  color: #ffffff;
+  opacity: 1;
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.menu-text {
+  font-size: 4rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: -2px;
+  text-transform: none;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  line-height: 0.85;
+  text-align: left;
+  display: block;
+}
+
+.menu-text::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.8);
+  transition: width 0.3s ease;
+}
+
+.mobile-menu-list li:hover .menu-text::after {
+  width: 100%;
+}
+
+/* Contact Info - OTHERNAVBAR STYLE */
+.contact-info {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 40px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s ease 0.6s both;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-email {
+  margin-bottom: 40px;
+}
+
+.contact-email h4,
+.social-links h4 {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  font-family: 'Inter', sans-serif;
+}
+
+.contact-email p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', sans-serif;
+}
+
+.social-icons {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.social-icons a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  position: relative;
+  padding: 6px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.social-icons a:hover {
+  color: #ffffff;
+}
+
+/* Mobile Resume Button */
+.mobile-resume-section {
   margin-top: 20px;
 }
 
-/* Responsive Design - 3 LINES PERFECT POSITION */
+.mobile-resume-btn {
+  background: linear-gradient(to right, #ffffff, #cccccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: inline-block;
+}
+
+.mobile-resume-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
   .navBar {
-    padding: 0 20px; /* Enough padding for hamburger */
+    padding: 0 25px;
+    height: 70px;
     justify-content: space-between;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-    height: 60px;
   }
 
   .centerMenu {
@@ -194,67 +415,90 @@
 
   .mobile-menu-btn {
     display: flex;
-    right: 20px; /* Perfect position */
-    position: absolute; /* Ensure it stays absolute */
+  }
+
+  .mobile-menu-content {
+    padding: 70px 30px 30px 30px;
+  }
+
+  .nav-links-container {
+    margin-left: 40px;
+    justify-content: flex-start;
+  }
+
+  .menu-text {
+    font-size: 3.5rem;
+    line-height: 0.9;
+  }
+
+  .close-btn {
+    top: 25px;
+    right: 25px;
+    width: 45px;
+    height: 45px;
   }
 }
 
 @media (max-width: 480px) {
   .navBar {
-    padding: 0 15px;
-    height: 55px;
-  }
-  
-  .mobile-menu-btn {
-    right: 15px;
-    width: 28px;
-    height: 28px;
-  }
-
-  .hamburger {
-    width: 18px;
-    height: 13px;
+    padding: 0 20px;
+    height: 65px;
   }
 
   .mobile-menu-content {
-    width: 250px;
-    padding: 70px 20px 20px 20px;
+    padding: 60px 20px 20px 20px;
   }
 
-  .mobile-menu-list li {
-    font-size: 1.2rem;
-    padding: 10px 0;
+  .nav-links-container {
+    margin-left: 20px;
+    justify-content: flex-start;
+  }
+
+  .menu-text {
+    font-size: 3rem;
+    line-height: 0.95;
+  }
+
+  .mobile-menu-list {
+    gap: 1px;
+  }
+
+  .social-icons {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .close-btn {
+    top: 20px;
+    right: 20px;
+    width: 42px;
+    height: 42px;
   }
 }
 
-/* Small devices like iPhone SE */
 @media (max-width: 375px) {
   .navBar {
-    padding: 0 12px;
-    height: 50px;
-  }
-  
-  .mobile-menu-btn {
-    right: 12px;
-    width: 26px;
-    height: 26px;
-  }
-
-  .hamburger {
-    width: 16px;
-    height: 12px;
-  }
-
-  .hamburger span {
-    height: 2px;
+    padding: 0 15px;
   }
 
   .mobile-menu-content {
-    width: 220px;
+    padding: 50px 15px 15px 15px;
   }
 
-  .mobile-menu-list li {
-    font-size: 1.1rem;
+  .nav-links-container {
+    margin-left: 15px;
+  }
+
+  .menu-text {
+    font-size: 2.6rem;
+    line-height: 1;
+  }
+
+  .close-btn {
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -270,7 +514,6 @@ body {
   width: 100%;
 }
 
-/* Simple body scroll prevention */
 body.menu-open {
   overflow: hidden;
 }
