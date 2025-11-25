@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./About.css";
-// Import your image - replace with your actual image path
-import ProfileImage from "../../assets/banner8.png";
+import ProfileImage from "../../assets/bannerpn.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,23 +10,47 @@ function About() {
   const aboutRef = useRef(null);
   const skillsRef = useRef(null);
   const imageRef = useRef(null);
-  const headerRef = useRef(null);
+  const skillsTitleRef = useRef(null);
+  const devTitleRef = useRef(null);
   const linesRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const header = headerRef.current;
+      const skillsTitle = skillsTitleRef.current;
+      const devTitle = devTitleRef.current;
       const lines = linesRef.current;
       const skillsSection = skillsRef.current;
       const profileImage = imageRef.current;
 
-      // Header animation
-      gsap.from(header, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out"
-      });
+      // Skills title animation - slide up from bottom
+      if (skillsTitle) {
+        gsap.from(skillsTitle, {
+          y: 80,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: skillsTitle,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        });
+      }
+
+      // Developer title animation - slide up from bottom
+      if (devTitle) {
+        gsap.from(devTitle, {
+          y: 80,
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: devTitle,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        });
+      }
 
       // Lines animation
       lines.forEach((line) => {
@@ -68,15 +91,15 @@ function About() {
   const skillsData = [
     {
       category: "Languages & Data",
-      items: ["Java", "JavaScript", "Git", "MongoDB", "SQL", "C++", "Windows"]
+      items: ["Java", "JavaScript", "C++", "SQL", "MongoDB", "Git", "GitHub", "Windows"]
     },
     {
-      category: "Framework & Library",
-      items: ["React", "Node.js", "Express.js"]
+      category: "Frameworks & Libraries",
+      items: ["React", "Node.js", "Express.js", "Tailwind CSS", "GSAP", "Firebase"]
     },
     {
-      category: "Core OS Concepts",
-      items: ["IPv4", "DNS", "IPv6", "Operating Systems", "System Config"]
+      category: "Tools & Concepts",
+      items: ["Postman", "DSA", "DBMS", "OS", "IPv4", "DNS", "IPv6", "System Config"]
     }
   ];
 
@@ -84,19 +107,22 @@ function About() {
     <div className="about-wrapper" ref={aboutRef} id="about">
       {/* SKILLS SECTION */}
       <div className="skills-section" ref={skillsRef}>
-        <div className="skills-header" ref={headerRef}>
-          <h1 className="skills-title">DEVELOPER DESIGNER CREATOR /</h1>
+        
+        {/* SKILLS HEADING FIRST */}
+        <div className="skills-main-header">
+          <h1 className="skills-main-title" ref={skillsTitleRef}>SKILLS /</h1>
         </div>
 
         <div className="line" ref={el => linesRef.current[0] = el}></div>
 
+        {/* SKILLS GRID */}
         <div className="skills-grid">
           {skillsData.map((skillGroup, index) => (
             <div key={index} className="skill-group">
               <h3 className="skill-category">{skillGroup.category}</h3>
               <div className="skill-items">
                 {skillGroup.items.map((skill, skillIndex) => (
-                  <span key={skillIndex} className="skill-item">{skill}</span>
+                  <span key={skillIndex} className="skill-item-clean">{skill}</span>
                 ))}
               </div>
             </div>
@@ -104,6 +130,13 @@ function About() {
         </div>
 
         <div className="line" ref={el => linesRef.current[1] = el}></div>
+
+        {/* TITLE AFTER SKILLS */}
+        <div className="about-title-section">
+          <h1 className="about-main-title" ref={devTitleRef}>DEVELOPER DESIGNER CREATOR /</h1>
+        </div>
+
+        <div className="line" ref={el => linesRef.current[2] = el}></div>
 
         {/* About Me Description WITH IMAGE */}
         <div className="about-description-with-image">
