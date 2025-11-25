@@ -3,10 +3,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Project.css";
 
-import Ogne from "../../assets/ognebg2.jpeg";
+import Ogne from "../../assets/ogne.png";
 import CodeReviewer from "../../assets/Code.jpg";
 import Linkdin from "../../assets/linkdin.png";
-import OgneVideo from "../../assets/OGNERecord.mp4";
 
 import { FaGithub, FaGlobe, FaVideo, FaArrowRight } from "react-icons/fa";
 
@@ -24,7 +23,6 @@ function Project() {
       title: "OGNÉ – FULL STACK E-COMMERCE PLATFORM",
       desc: "A modern e-commerce platform with full authentication, cart, product management and admin control.",
       img: Ogne,
-      video: OgneVideo,
       links: {
         github: "https://github.com/Aayushbhandarkar/OGNE-Ecommerce",
         live: "https://ogne-ecommerce-frontend.onrender.com",
@@ -136,23 +134,21 @@ function Project() {
         });
 
         // Image parallax & scale
-        if (media) {
-          ScrollTrigger.create({
-            trigger: block,
-            start: "top 100%",
-            end: "bottom top",
-            scrub: 1,
-            onUpdate(self) {
-              const p = self.progress;
-              gsap.to(media, {
-                y: gsap.utils.mapRange(0, 1, 40, -40, p),
-                scale: gsap.utils.mapRange(0, 1, 1.05, 1, p),
-                ease: "power3.out",
-                overwrite: true,
-              });
-            },
-          });
-        }
+        ScrollTrigger.create({
+          trigger: block,
+          start: "top 100%",
+          end: "bottom top",
+          scrub: 1,
+          onUpdate(self) {
+            const p = self.progress;
+            gsap.to(media, {
+              y: gsap.utils.mapRange(0, 1, 40, -40, p),
+              scale: gsap.utils.mapRange(0, 1, 1.05, 1, p),
+              ease: "power3.out",
+              overwrite: true,
+            });
+          },
+        });
       });
     }, sectionRef);
 
@@ -218,22 +214,7 @@ function Project() {
                       rel="noopener noreferrer"
                       aria-label={`Open ${p.title} — ${url}`}
                     >
-                      {/* OGNE Project - Image with Video Overlay */}
-                      {p.id === "01" && p.video ? (
-                        <div className="video-overlay-container">
-                          <img src={p.img} alt={p.title} className="proj-media" />
-                          <video
-                            className="project-video"
-                            src={p.video}
-                            autoPlay
-                            muted
-                            loop
-                            playsInline
-                          />
-                        </div>
-                      ) : (
-                        <img src={p.img} alt={p.title} className="proj-media" />
-                      )}
+                      <img src={p.img} alt={p.title} className="proj-media" />
                       <div className="media-overlay">
                         <div className="overlay-content">
                           <span className="view-text">View Project</span>
