@@ -48,12 +48,11 @@ function OtherPagesNav() {
   return (
     <>
       <nav className="otherPagesNav">
-        {/* WHITE CIRCLE HAMBURGER - RIGHT SIDE */}
+        {/* SIMPLE HAMBURGER - 2 LINES */}
         <div className="otherPages-mobile-menu-btn" onClick={toggleMenu}>
-          <div className={`circle-hamburger ${isMenuOpen ? 'active' : ''}`}>
-            <span className="line-1"></span>
-            <span className="line-2"></span>
-            <span className="line-3"></span>
+          <div className={`simple-hamburger ${isMenuOpen ? 'active' : ''}`}>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </nav>

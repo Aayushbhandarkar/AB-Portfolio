@@ -9,53 +9,94 @@ function Services() {
   const servicesRef = useRef(null);
   const blocksRef = useRef([]);
   const headerRef = useRef(null);
+  const titleRef = useRef(null);
+  const miniRef = useRef(null);
+  const descRef = useRef(null);
   const linesRef = useRef([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      const blocks = blocksRef.current;
-      const header = headerRef.current;
-      const lines = linesRef.current;
+      // Services wrapper: fade-in + slight slide-up
+      gsap.fromTo(servicesRef.current,
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: servicesRef.current,
+            start: "top 85%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
 
-      // Header animation
-      gsap.from(header, {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        ease: "power2.out"
-      });
+      // "WHAT I DO /" title: fade + slide-up with small stagger
+      gsap.fromTo([titleRef.current, miniRef.current, descRef.current],
+        {
+          opacity: 0,
+          y: 40
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          stagger: 0.15,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: headerRef.current,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          }
+        }
+      );
 
-      // Lines animation
-      lines.forEach((line) => {
+      // Divider line: scaleX animation from left
+      linesRef.current.forEach((line, index) => {
         if (line) {
-          gsap.from(line, {
-            scaleX: 0,
-            duration: 1,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: line,
-              start: "top 85%",
-              toggleActions: "play none none none"
+          gsap.fromTo(line,
+            {
+              scaleX: 0,
+              transformOrigin: "left center"
+            },
+            {
+              scaleX: 1,
+              duration: 1.2,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: line,
+                start: "top 85%",
+                toggleActions: "play none none none"
+              }
             }
-          });
+          );
         }
       });
 
-      // Simple fade up animation for blocks
-      blocks.forEach((block, index) => {
+      // Each service block: minimal fade-up on scroll
+      blocksRef.current.forEach((block, index) => {
         if (block) {
-          gsap.from(block, {
-            y: 60,
-            opacity: 0,
-            duration: 1,
-            ease: "power2.out",
-            delay: index * 0.1,
-            scrollTrigger: {
-              trigger: block,
-              start: "top 85%",
-              toggleActions: "play none none none"
+          gsap.fromTo(block,
+            {
+              opacity: 0,
+              y: 40
+            },
+            {
+              opacity: 1,
+              y: 0,
+              duration: 1,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: block,
+                start: "top 80%",
+                toggleActions: "play none none none"
+              }
             }
-          });
+          );
         }
       });
 
@@ -100,11 +141,11 @@ function Services() {
     <div className="services-wrapper" ref={servicesRef} id="services">
       {/* TOP HEADER */}
       <div className="services-header" ref={headerRef}>
-        <h1 className="services-title">WHAT I DO /</h1>
+        <h1 className="services-title" ref={titleRef}>WHAT I DO /</h1>
 
         <div className="services-right">
-          <p className="services-mini">(SERVICES)</p>
-          <p className="services-desc">
+          <p className="services-mini" ref={miniRef}>(SERVICES)</p>
+          <p className="services-desc" ref={descRef}>
             I specialize in building full-stack web applications that are fast, reliable,
             and user-friendly. With a solid foundation in both frontend and backend
             technologies, I help bring ideas to life whether it's for a business,

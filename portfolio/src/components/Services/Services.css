@@ -219,3 +219,21 @@
     font-size: 1.8rem;
   }
 }
+/* Ensure elements are hidden before animation */
+.services-wrapper {
+  opacity: 0;
+}
+
+.services-title,
+.services-mini,
+.services-desc {
+  opacity: 0;
+}
+
+.line {
+  transform: scaleX(0);
+}
+
+.service-block {
+  opacity: 0;
+}

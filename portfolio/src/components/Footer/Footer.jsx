@@ -51,10 +51,10 @@ function Footer() {
               <li><a href="https://leetcode.com/u/ayushbhandarkar7/" 
                      target="_blank" 
                      rel="noopener noreferrer" 
-                     className="footer-link">LeetCode</a></li>
-              <li><a href="https://github.com/Aayushbhandarkar" 
-                     target="_blank" 
-                     rel="noopener noreferrer" 
+              //        className="footer-link">LeetCode</a></li>
+              // <li><a href="https://github.com/Aayushbhandarkar" 
+              //        target="_blank" 
+              //        rel="noopener noreferrer" 
                      className="footer-link">Github</a></li>
             </ul>
           </div>
