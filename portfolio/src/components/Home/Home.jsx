@@ -74,13 +74,12 @@ function Home() {
       <div className="hero-content">
         {/* Main Title */}
         <h1 className="heroTitle" ref={titleRef}>
-          HEYA,
-          <span className="highlightName">
-            <span className="name-first">AYUSH</span>
-            <span className="name-last">BHANDARKAR</span>
-          </span>
-          HERE
-        </h1>
+  HEYA,
+  <span className="highlightName">
+    <span className="name-first">AYUSH</span>
+    <span className="name-last">BHANDARKAR</span>
+  </span>
+</h1>
 
         {/* Full Stack Developer Subtitle */}
         <div className="subtitle-container">
