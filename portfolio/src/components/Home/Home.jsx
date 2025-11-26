@@ -109,7 +109,7 @@ function Home() {
         <h1 className="heroTitle" ref={titleRef}>
           <span className="hero-line line-1" ref={line1Ref}>HELLO,</span>
           <span className="hero-line line-2" ref={line2Ref}>I'M AYUSH</span>
-          <span className="hero-line line-3" ref={line3Ref}>BHANDARAKAR</span>
+          <span className="hero-line line-3" ref={line3Ref}>BHANDARKAR</span>
         </h1>
 
         {/* Full Stack Developer Subtitle - Normal Text */}
