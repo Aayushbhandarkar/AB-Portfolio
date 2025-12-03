@@ -1,65 +1,75 @@
-import React, { useEffect, useState, useRef } from 'react'
-import Nav from './components/Nav/Nav'
-import OtherPagesNav from './components/Nav/OtherPagesNav'
-import Home from './components/Home/Home'
-import Services from './components/Services/Services'
-import Project from './components/Projects/Project'
-import About from './components/About/About'
-import Contact from './components/Contact/Contact'
-import Footer from './components/Footer/Footer'
+import React, { useEffect, useState } from 'react';
+import Nav from './components/Nav/Nav';
+import OtherPagesNav from './components/Nav/OtherPagesNav';
+import Home from './components/Home/Home';
+import Services from './components/Services/Services';
+import Project from './components/Projects/Project';
+import About from './components/About/About';
+import Experience from './components/Experience/Experience';
+import Contact from './components/Contact/Contact';
+import Footer from './components/Footer/Footer';
+import VoiceAssistant from './components/VoiceAssistant/VoiceAssistant';  // ✅ NEW
 
 function App() {
-
-  const homeRef = useRef(null);
   const [showWhiteNav, setShowWhiteNav] = useState(true);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        setShowWhiteNav(entries[0].isIntersecting);
-      },
-      { threshold: 0.3 }
-    );
-
-    if (homeRef.current) observer.observe(homeRef.current);
-
-    return () => {
-      if (homeRef.current) observer.unobserve(homeRef.current);
+    const handleScroll = () => {
+      if (window.scrollY < 80) {
+        setShowWhiteNav(true);    // HOME — White nav
+      } else {
+        setShowWhiteNav(false);   // Other pages — Circle nav
+      }
     };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  return (
-    <>
-      {/* White Navbar only shows on HOME */}
-      {showWhiteNav && <Nav />}
-      
-      {/* Circle Hamburger Navbar shows on ALL OTHER PAGES */}
-      {!showWhiteNav && <OtherPagesNav />}
+ return (
+  <>
+    {/* NAV DEPENDS ON SCROLL */}
+    {showWhiteNav ? <Nav /> : <OtherPagesNav />}
 
-      <div id="home" ref={homeRef}>
-        <Home />
-      </div>
+    {/* HOME */}
+    <div id="home">
+      <Home />
+    </div>
 
-      <div id="services">
-        <Services />
-      </div>
+    {/* ABOUT NOW COMES 2ND */}
+    <div id="about">
+      <About />
+    </div>
 
-      <div id="projects">
-        <Project />
-      </div>
+    {/* PROJECT NOW COMES 3RD */}
+    <div id="projects">
+      <Project />
+    </div>
 
-      <div id="about">
-        <About />
-      </div>
+    {/* SERVICES NOW COMES AFTER PROJECT */}
+    <div id="services">
+      <Services />
+    </div>
 
-      <div id="contact">
-        <Contact />
-      </div>
+    {/* EXPERIENCE */}
+    <div id="experience">
+      <Experience />
+    </div>
 
-      {/* Footer added here - will show on all pages */}
-      <Footer />
-    </>
-  )
+    {/* CONTACT */}
+    <div id="contact">
+      <Contact />
+    </div>
+
+    <Footer />
+
+    {/* ALWAYS VISIBLE VOICE BTN */}
+    <VoiceAssistant />
+  </>
+);
+
 }
 
-export default App
+export default App;

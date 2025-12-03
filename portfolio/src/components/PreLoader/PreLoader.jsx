@@ -1,31 +1,37 @@
 import React, { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import "./PreLoader.css";
+import gsap from "gsap";
+import "./Preloader.css";
 
-function PreLoader() {
-  const loaderRef = useRef(null);
+function Preloader({ isLoaded }) {
+  const barRef = useRef(null);
+  const wrapperRef = useRef(null);
 
   useEffect(() => {
-    // Wait for 2 seconds before removing
-    const tl = gsap.timeline();
+    if (!isLoaded) return;
 
-    tl.to(loaderRef.current, {
-      delay: 2,          // <-- 2 seconds wait
-      y: "-100%",
-      duration: 1.3,
-      ease: "power4.inOut"
-    });
+    const tl = gsap.timeline({ defaults: { ease: "power2.out" } });
 
-    tl.to(loaderRef.current, {
-      opacity: 0,
-      duration: 0.5,
-      onComplete: () => {
-        loaderRef.current.style.display = "none";
-      }
-    });
-  }, []);
+    tl.fromTo(
+      barRef.current,
+      { width: "0%" },
+      { width: "100%", duration: 0.5 }
+    )
+      .to(barRef.current, { x: "100%", duration: 0.5 })
+      .to(barRef.current, { opacity: 0, duration: 0.2 }, "-=0.3")
 
-  return <div ref={loaderRef} className="preloader"></div>;
+      // THE REAL FIX (removes preloader instantly)
+      .set(wrapperRef.current, {
+        opacity: 0,
+        visibility: "hidden",
+        display: "none",
+      });
+  }, [isLoaded]);
+
+  return (
+    <div className="apple-preloader-wrapper" ref={wrapperRef}>
+      <div className="apple-bar" ref={barRef}></div>
+    </div>
+  );
 }
 
-export default PreLoader;
+export default Preloader;

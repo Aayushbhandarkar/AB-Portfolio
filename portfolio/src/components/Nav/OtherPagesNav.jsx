@@ -57,7 +57,7 @@ function OtherPagesNav() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay with Glass Morphism Effect */}
+      {/* Mobile Menu Overlay with Cream Background */}
       <div className={`otherPages-mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}>
         <div className="otherPages-mobile-menu-content" onClick={(e) => e.stopPropagation()} ref={menuRef}>
           
@@ -76,35 +76,47 @@ function OtherPagesNav() {
             </div>
           </div>
 
-          {/* Navigation Links - UPDATED WITH SERVICES */}
+          {/* Navigation Links - UPDATED ORDER: Home → About → Projects → Services → Experience → Contact */}
           <div className="nav-links-container">
             <ul className="otherPages-mobile-menu-list">
+              {/* 1. Home */}
               <Link to="home" smooth={true} duration={500} onClick={closeMenu}>
                 <li ref={(el) => setMenuItemRef(el, 0)}>
                   <span className="menu-text">Home</span>
                 </li>
               </Link>
 
-              <Link to="services" smooth={true} duration={500} onClick={closeMenu}>
+              {/* 2. About */}
+              <Link to="about" smooth={true} duration={500} onClick={closeMenu}>
                 <li ref={(el) => setMenuItemRef(el, 1)}>
-                  <span className="menu-text">Services</span>
+                  <span className="menu-text">About</span>
                 </li>
               </Link>
 
+              {/* 3. Projects */}
               <Link to="projects" smooth={true} duration={500} onClick={closeMenu}>
                 <li ref={(el) => setMenuItemRef(el, 2)}>
                   <span className="menu-text">Works</span>
                 </li>
               </Link>
 
-              <Link to="about" smooth={true} duration={500} onClick={closeMenu}>
+              {/* 4. Services */}
+              <Link to="services" smooth={true} duration={500} onClick={closeMenu}>
                 <li ref={(el) => setMenuItemRef(el, 3)}>
-                  <span className="menu-text">About</span>
+                  <span className="menu-text">Services</span>
                 </li>
               </Link>
 
-              <Link to="contact" smooth={true} duration={500} onClick={closeMenu}>
+              {/* 5. Experience */}
+              <Link to="experience" smooth={true} duration={500} onClick={closeMenu}>
                 <li ref={(el) => setMenuItemRef(el, 4)}>
+                  <span className="menu-text">Experience</span>
+                </li>
+              </Link>
+
+              {/* 6. Contact */}
+              <Link to="contact" smooth={true} duration={500} onClick={closeMenu}>
+                <li ref={(el) => setMenuItemRef(el, 5)}>
                   <span className="menu-text">Contact</span>
                 </li>
               </Link>
@@ -112,7 +124,7 @@ function OtherPagesNav() {
           </div>
 
           {/* Contact Info with Fade In */}
-          <div className="otherPages-contact-info" ref={(el) => setMenuItemRef(el, 5)}>
+          <div className="otherPages-contact-info" ref={(el) => setMenuItemRef(el, 6)}>
             <div className="contact-email">
               <h4>EMAIL ADDRESS</h4>
               <p>ayushbhandarkar7@gmail.com</p>

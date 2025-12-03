@@ -1,206 +1,230 @@
-import React, { useState, useEffect, useRef } from 'react';
-import "./Nav.css";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-scroll";
+import gsap from "gsap";
+import "./Nav.css";
 
 function Nav() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuRef = useRef(null);
+  const [open, setOpen] = useState(false);
+  const navRef = useRef(null);
+  const roleRef = useRef(null);
   const menuItemsRef = useRef([]);
+  const hamburgerRef = useRef(null);
+  const roleLettersRef = useRef([]);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  // Scroll prevention
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.classList.add('menu-open');
-    } else {
-      document.body.classList.remove('menu-open');
+  // Add menu items to array for animation
+  const addToMenuItems = (el) => {
+    if (el && !menuItemsRef.current.includes(el)) {
+      menuItemsRef.current.push(el);
     }
-  }, [isMenuOpen]);
-
-  // Menu items animation
-  useEffect(() => {
-    if (isMenuOpen && menuItemsRef.current) {
-      menuItemsRef.current.forEach((item, index) => {
-        if (item) {
-          item.style.animation = `slideInRight 0.6s ease ${index * 0.1}s both`;
-        }
-      });
-    } else {
-      menuItemsRef.current.forEach((item) => {
-        if (item) {
-          item.style.animation = '';
-        }
-      });
-    }
-  }, [isMenuOpen]);
-
-  const setMenuItemRef = (element, index) => {
-    menuItemsRef.current[index] = element;
   };
+
+  // Add role letters to array for animation
+  const addToRoleLetters = (el) => {
+    if (el && !roleLettersRef.current.includes(el)) {
+      roleLettersRef.current.push(el);
+    }
+  };
+
+  useEffect(() => {
+    const tl = gsap.timeline({ delay: 0.5 }); // Small delay after home animation
+
+    // Nav container slide down
+    tl.fromTo(navRef.current, 
+      { 
+        opacity: 0,
+        y: -50
+      },
+      { 
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power3.out"
+      }
+    )
+    // Role text typewriter effect
+    .fromTo(roleLettersRef.current,
+      { 
+        opacity: 0,
+        x: -10,
+        scale: 0.8
+      },
+      { 
+        opacity: 0.75,
+        x: 0,
+        scale: 1,
+        duration: 0.4,
+        stagger: 0.03,
+        ease: "back.out(1.4)"
+      },
+      "-=0.4"
+    )
+    // Menu items staggered animation
+    .fromTo(menuItemsRef.current,
+      { 
+        opacity: 0,
+        y: -15
+      },
+      { 
+        opacity: 0.75,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "back.out(1.2)"
+      },
+      "-=0.3"
+    )
+    // Hamburger fade in
+    .fromTo(hamburgerRef.current,
+      { 
+        opacity: 0,
+        scale: 0.8
+      },
+      { 
+        opacity: 1,
+        scale: 1,
+        duration: 0.4,
+        ease: "power2.out"
+      },
+      "-=0.2"
+    );
+
+    // Mobile menu animation
+    if (open) {
+      gsap.fromTo(".mobile-minimal-menu",
+        { 
+          y: -100,
+          opacity: 0
+        },
+        { 
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power3.out"
+        }
+      );
+    }
+
+  }, [open]);
+
+  // Split role text into individual letters for animation
+  const roleText = "Full-Stack   Developer";
+  const roleParts = roleText.split('').map((letter, index) => {
+    if (letter === '-') {
+      return (
+        <span key={index} className="role-hyphen">
+          {letter}
+        </span>
+      );
+    }
+    return (
+      <span 
+        key={index} 
+        ref={addToRoleLetters}
+        className="role-letter"
+      >
+        {letter}
+      </span>
+    );
+  });
 
   return (
     <>
-      <nav className="navBar">
-        {/* Desktop Menu - SAME AS BEFORE */}
-        <ul className="centerMenu">
-          <Link 
-            to="home" 
-            smooth={true} 
-            duration={500} 
-            offset={-80}
-          >
-            <li>Home</li>
+      {/* TOP INVISIBLE NAVBAR */}
+      <nav className="nav-invisible" ref={navRef}>
+        <p className="nav-role" ref={roleRef}>
+          {roleParts}
+        </p>
+
+        {/* Desktop Menu - UPDATED ORDER */}
+        <ul className="nav-menu">
+          {/* 1. Home */}
+          <Link to="home" smooth={true} duration={600} offset={-50}>
+            <li ref={addToMenuItems}>Home</li>
           </Link>
 
-          <Link 
-            to="services" 
-            smooth={true} 
-            duration={500} 
-            offset={-80}
-          >
-            <li>Services</li>
+          {/* 2. About */}
+          <Link to="about" smooth={true} duration={600} offset={-50}>
+            <li ref={addToMenuItems}>About</li>
           </Link>
 
-          <Link 
-            to="projects" 
-            smooth={true} 
-            duration={500} 
-            offset={-80}
-          >
-            <li>Projects</li>
+          {/* 3. Projects */}
+          <Link to="projects" smooth={true} duration={600} offset={-50}>
+            <li ref={addToMenuItems}>Projects</li>
           </Link>
 
-          <Link 
-            to="about" 
-            smooth={true} 
-            duration={500} 
-            offset={-80}
-          >
-            <li>About</li>
+          {/* 4. Services */}
+          <Link to="services" smooth={true} duration={600} offset={-50}>
+            <li ref={addToMenuItems}>Services</li>
           </Link>
 
-          <Link 
-            to="contact" 
-            smooth={true} 
-            duration={500} 
-            offset={-80}
-          >
-            <li>Contact</li>
+          {/* 5. Experience */}
+          <Link to="experience" smooth={true} duration={600} offset={-50}>
+            <li ref={addToMenuItems}>Experience</li>
           </Link>
 
-          {/* Resume open in new tab */}
+          {/* 6. Contact */}
+          <Link to="contact" smooth={true} duration={600} offset={-50}>
+            <li ref={addToMenuItems}>Contact</li>
+          </Link>
+
           <li
-            className="resumeBtn"
+            className="resumeNav"
             onClick={() => window.open("/resume.pdf", "_blank")}
+            ref={addToMenuItems}
           >
             Resume
           </li>
         </ul>
 
-        {/* Mobile Hamburger Menu - NORMAL HAMBURGER (NO CIRCLE) */}
-        <div className="mobile-menu-btn" onClick={toggleMenu}>
-          <div className={`hamburger ${isMenuOpen ? 'active' : ''}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
+        {/* Mobile Hamburger */}
+        <div className="hamburger-mini" onClick={() => setOpen(!open)} ref={hamburgerRef}>
+          <span></span>
+          <span></span>
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay - OTHERNAVBAR STYLE */}
-      <div className={`mobile-menu-overlay ${isMenuOpen ? 'active' : ''}`} onClick={closeMenu}>
-        <div className="mobile-menu-content" onClick={(e) => e.stopPropagation()} ref={menuRef}>
-          
-          {/* Animated Background Elements */}
-          <div className="menu-bg-elements">
-            <div className="bg-blob blob-1"></div>
-            <div className="bg-blob blob-2"></div>
-          </div>
-
-          {/* Close Button - VISIBLE AND CLEAR */}
-          <div className="close-btn" onClick={closeMenu}>
-            <div className="close-icon">
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-
-          {/* Navigation Links - OTHERNAVBAR STYLE */}
-          <div className="nav-links-container">
-            <ul className="mobile-menu-list">
-              <Link to="home" smooth={true} duration={500} onClick={closeMenu}>
-                <li ref={(el) => setMenuItemRef(el, 0)}>
-                  <span className="menu-text">Home</span>
-                </li>
-              </Link>
-
-              <Link to="services" smooth={true} duration={500} onClick={closeMenu}>
-                <li ref={(el) => setMenuItemRef(el, 1)}>
-                  <span className="menu-text">Services</span>
-                </li>
-              </Link>
-
-              <Link to="projects" smooth={true} duration={500} onClick={closeMenu}>
-                <li ref={(el) => setMenuItemRef(el, 2)}>
-                  <span className="menu-text">Projects</span>
-                </li>
-              </Link>
-
-              <Link to="about" smooth={true} duration={500} onClick={closeMenu}>
-                <li ref={(el) => setMenuItemRef(el, 3)}>
-                  <span className="menu-text">About</span>
-                </li>
-              </Link>
-
-              <Link to="contact" smooth={true} duration={500} onClick={closeMenu}>
-                <li ref={(el) => setMenuItemRef(el, 4)}>
-                  <span className="menu-text">Contact</span>
-                </li>
-              </Link>
-            </ul>
-          </div>
-
-          {/* Contact Info - OTHERNAVBAR STYLE */}
-          <div className="contact-info" ref={(el) => setMenuItemRef(el, 5)}>
-            <div className="contact-email">
-              <h4>EMAIL ADDRESS</h4>
-              <p>ayushbhandarkar7@gmail.com</p>
-            </div>
-            
-            <div className="social-links">
-              <h4>CONNECT</h4>
-              <div className="social-icons">
-                <a href="https://www.linkedin.com/in/ayush-bhandarkar-555730286/" target="_blank" rel="noopener noreferrer">
-                  <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/Aayushbhandarkar" target="_blank" rel="noopener noreferrer">
-                  <span>Github</span>
-                </a>
-              </div>
-            </div>
-
-            {/* Resume Button in Mobile Menu */}
-            <div className="mobile-resume-section">
-              <div
-                className="mobile-resume-btn"
-                onClick={() => {
-                  window.open("/resume.pdf", "_blank");
-                  closeMenu();
-                }}
-              >
-                Resume
-              </div>
-            </div>
-          </div>
-
+      {/* MOBILE DROPDOWN MENU - UPDATED ORDER */}
+      <div className={`mobile-minimal-menu ${open ? "show" : ""}`}>
+        {/* Close Button - Only this added */}
+        <div className="close-btn" onClick={() => setOpen(false)}>
+          ×
         </div>
+        
+        <ul>
+          {/* 1. Home */}
+          <Link to="home" smooth={true} duration={600} offset={-50} onClick={() => setOpen(false)}>
+            <li>Home</li>
+          </Link>
+
+          {/* 2. About */}
+          <Link to="about" smooth={true} duration={600} offset={-50} onClick={() => setOpen(false)}>
+            <li>About</li>
+          </Link>
+
+          {/* 3. Projects */}
+          <Link to="projects" smooth={true} duration={600} offset={-50} onClick={() => setOpen(false)}>
+            <li>Projects</li>
+          </Link>
+
+          {/* 4. Services */}
+          <Link to="services" smooth={true} duration={600} offset={-50} onClick={() => setOpen(false)}>
+            <li>Services</li>
+          </Link>
+
+          {/* 5. Experience */}
+          <Link to="experience" smooth={true} duration={600} offset={-50} onClick={() => setOpen(false)}>
+            <li>Experience</li>
+          </Link>
+
+          {/* 6. Contact */}
+          <Link to="contact" smooth={true} duration={600} offset={-50} onClick={() => setOpen(false)}>
+            <li>Contact</li>
+          </Link>
+
+          <li onClick={() => { window.open("/resume.pdf", "_blank"); setOpen(false); }}>
+            Resume
+          </li>
+        </ul>
       </div>
     </>
   );

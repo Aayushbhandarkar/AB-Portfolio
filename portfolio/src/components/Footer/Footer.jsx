@@ -1,10 +1,44 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
 import "./Footer.css";
 
 function Footer() {
   const socialLinksRef = useRef(null);
   const timeRef = useRef(null);
+  const scrollTopRef = useRef(null);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+  const footerRef = useRef(null);
+
+  // Scroll to top function
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
+  // Show/hide scroll top button only when footer is in view
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!footerRef.current) return;
+      
+      const footerRect = footerRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      
+      // Footer visible hone pe hi arrow dikhega
+      if (footerRect.top < windowHeight && footerRect.bottom > 0) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    // Initial check
+    handleScroll();
+    
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -19,13 +53,31 @@ function Footer() {
           start: "top 85%",
         },
       });
+
+      // Scroll top button animation when it appears
+      if (showScrollTop) {
+        gsap.fromTo(scrollTopRef.current,
+          {
+            scale: 0,
+            opacity: 0,
+            rotation: -180
+          },
+          {
+            scale: 1,
+            opacity: 1,
+            rotation: 0,
+            duration: 0.5,
+            ease: "back.out(1.7)"
+          }
+        );
+      }
     });
 
     return () => ctx.revert();
-  }, []);
+  }, [showScrollTop]);
 
   return (
-    <footer className="footer-section" aria-label="Footer section">
+    <footer className="footer-section" aria-label="Footer section" ref={footerRef}>
       <div className="footer-container" ref={socialLinksRef}>
         <div className="footer-divider"></div>
         
@@ -48,13 +100,10 @@ function Footer() {
                      target="_blank" 
                      rel="noopener noreferrer" 
                      className="footer-link">LinkedIn</a></li>
-              <li><a href="https://leetcode.com/u/ayushbhandarkar7/" 
+            
+              <li><a href="https://github.com/Aayushbhandarkar" 
                      target="_blank" 
                      rel="noopener noreferrer" 
-              //        className="footer-link">LeetCode</a></li>
-              // <li><a href="https://github.com/Aayushbhandarkar" 
-              //        target="_blank" 
-              //        rel="noopener noreferrer" 
                      className="footer-link">Github</a></li>
             </ul>
           </div>
@@ -74,7 +123,7 @@ function Footer() {
             <ul className="footer-links">
               <li>
                 <a href="mailto:ayushbhandarkar7@gmail.com" 
-                   className="footer-link">
+                   className="footer-link email-link">
                   ayushbhandarkar7@gmail.com
                 </a>
               </li>
@@ -101,8 +150,20 @@ function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Scroll to Top Button - ONLY SHOWS IN FOOTER */}
+      {showScrollTop && (
+        <button 
+          className="scroll-top-btn" 
+          onClick={scrollToTop}
+          ref={scrollTopRef}
+          aria-label="Scroll to top"
+        >
+          ↑
+        </button>
+      )}
     </footer>
   );
 }
 
-export default Footer;
+export default React.memo(Footer);

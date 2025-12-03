@@ -16,7 +16,7 @@ function Services() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Services wrapper: fade-in + slight slide-up
+      // Top section animation
       gsap.fromTo(servicesRef.current,
         {
           opacity: 0,
@@ -35,7 +35,7 @@ function Services() {
         }
       );
 
-      // "WHAT I DO /" title: fade + slide-up with small stagger
+      // "WHAT I DO /" title and description
       gsap.fromTo([titleRef.current, miniRef.current, descRef.current],
         {
           opacity: 0,
@@ -55,8 +55,8 @@ function Services() {
         }
       );
 
-      // Divider line: scaleX animation from left
-      linesRef.current.forEach((line, index) => {
+      // Divider line animations
+      linesRef.current.forEach((line) => {
         if (line) {
           gsap.fromTo(line,
             {
@@ -77,8 +77,8 @@ function Services() {
         }
       });
 
-      // Each service block: minimal fade-up on scroll
-      blocksRef.current.forEach((block, index) => {
+      // Service blocks animation
+      blocksRef.current.forEach((block) => {
         if (block) {
           gsap.fromTo(block,
             {
@@ -112,7 +112,7 @@ function Services() {
       text: "From frontend interactions to backend APIs, I build complete web solutions. I work with modern stacks to deliver apps that are scalable, maintainable, and ready for real-world users.",
       tech: [
         "React, Node.js, Express.js",
-        "REST APIs, Firebase, Docker",
+        "REST APIs, Firebase", 
         "Git, GitHub, Postman"
       ]
     },
@@ -121,7 +121,7 @@ function Services() {
       title: "UI/UX & Frontend",
       text: "Design is more than looks — it's about clarity and connection. I design and develop clean, responsive interfaces that feel intuitive across devices. My focus is on clarity, accessibility, and seamless user experiences.",
       tech: [
-        "NextJs, TailwindCSS, GSAP",
+        "TailwindCSS, GSAP",
         "Figma to Code", 
         "HTML, CSS, JavaScript"
       ]
@@ -138,65 +138,67 @@ function Services() {
   ];
 
   return (
-    <div className="services-wrapper" ref={servicesRef} id="services">
-      {/* TOP HEADER */}
-      <div className="services-header" ref={headerRef}>
-        <h1 className="services-title" ref={titleRef}>WHAT I DO /</h1>
+    <div id="services">
+      {/* TOP SECTION - CREAM BACKGROUND */}
+      <div className="services-top-section" ref={servicesRef}>
+        <div className="services-header" ref={headerRef}>
+          <h1 className="services-title" ref={titleRef}>WHAT I DO /</h1>
 
-        <div className="services-right">
-          <p className="services-mini" ref={miniRef}>(SERVICES)</p>
-          <p className="services-desc" ref={descRef}>
-            I specialize in building full-stack web applications that are fast, reliable,
-            and user-friendly. With a solid foundation in both frontend and backend
-            technologies, I help bring ideas to life whether it's for a business,
-            a startup, or a product team.
-          </p>
+          <div className="services-right">
+            <p className="services-mini" ref={miniRef}>(SERVICES)</p>
+            <p className="services-desc" ref={descRef}>
+              I specialize in building full-stack web applications that are fast, reliable,
+              and user-friendly. With a solid foundation in both frontend and backend
+              technologies, I help bring ideas to life whether it's for a business,
+              a startup, or a product team.
+            </p>
+          </div>
         </div>
       </div>
 
-      <div className="line" ref={el => linesRef.current[0] = el}></div>
+      {/* SUBTLE DIVIDER BETWEEN SECTIONS */}
+      <div className="services-divider"></div>
 
-      {/* SERVICE BLOCKS */}
-      {servicesData.map((service, index) => (
-        <React.Fragment key={service.id}>
-          <div
-            className="service-block"
-            ref={el => {
-              if (el && !blocksRef.current.includes(el)) blocksRef.current[index] = el;
-            }}
-          >
-            <div className="service-left">
-              <span className="service-number">{service.id}</span>
-            </div>
-
-            <div className="service-right">
-              <h2 className="service-title">
-                {service.title}
-              </h2>
-              
-              <div className="service-content">
+      {/* WARM GREY BACKGROUND SECTION */}
+      <div className="services-warm-section">
+        {/* SERVICE BLOCKS */}
+        {servicesData.map((service, index) => (
+          <React.Fragment key={service.id}>
+            <div
+              className="service-block"
+              ref={el => {
+                blocksRef.current[index] = el;
+              }}
+            >
+              {/* LEFT CONTENT - TITLE & DESCRIPTION */}
+              <div className="service-left-content">
+                <h2 className="service-title" data-number={service.id}>
+                  {service.title}
+                </h2>
                 <p className="service-text">
                   {service.text}
                 </p>
+              </div>
 
+              {/* RIGHT CONTENT - TECH STACK */}
+              <div className="service-right-content">
                 <div className="tech-list">
                   {service.tech.map((tech, techIndex) => (
-                    <React.Fragment key={techIndex}>
-                      <div className="tech-row">
-                        <span>0{techIndex + 1}</span> 
-                        <p>{tech}</p>
-                      </div>
-                      {techIndex < service.tech.length - 1 && <div className="divider"></div>}
-                    </React.Fragment>
+                    <div className="tech-row" key={techIndex}>
+                      <span>0{techIndex + 1}</span> 
+                      <p>{tech}</p>
+                    </div>
                   ))}
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="line" ref={el => linesRef.current[index + 1] = el}></div>
-        </React.Fragment>
-      ))}
+            {index < servicesData.length - 1 && (
+              <div className="line" ref={el => {linesRef.current[index] = el}}></div>
+            )}
+          </React.Fragment>
+        ))}
+      </div>
     </div>
   );
 }

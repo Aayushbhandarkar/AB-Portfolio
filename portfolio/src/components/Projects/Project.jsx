@@ -99,7 +99,7 @@ function Project() {
     };
   }, [isHoveringImage]);
 
-  // GSAP Animations
+  // GSAP Animations - PRESERVED EXACTLY
   useEffect(() => {
     const ctx = gsap.context(() => {
       blocksRef.current.forEach((block) => {
@@ -227,7 +227,10 @@ function Project() {
                   )}
                 </div>
 
-                <h2 className="proj-name">{p.title}</h2>
+                {/* UPDATED: Added data-number attribute for minimalist number styling */}
+                <h2 className="proj-name" data-number={p.id}>
+                  {p.title}
+                </h2>
                 <p className="proj-text">{p.desc}</p>
 
                 <div className="proj-links">

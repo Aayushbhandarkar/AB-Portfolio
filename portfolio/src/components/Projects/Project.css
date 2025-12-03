@@ -1,26 +1,27 @@
-/* Project.css */
 :root {
-  --bg: #000;
-  --text: #dad8cf;
-  --divider: #222;
-  --accent: #646cff;
-  --cursor-size: 50px;
+  --cream-bg: #EEEDE8;
+  --warm-grey: #E7E6DF;
+  --text-dark: #000000;
+  --text-muted: rgba(0, 0, 0, 0.75);
+  --divider-light: rgba(0, 0, 0, 0.12);
+  --divider-subtle: rgba(0, 0, 0, 0.08);
+  --number-opacity: 0.4;
 }
 
 .proj-section {
-  background: var(--bg);
-  color: var(--text);
-  padding: 120px 7%;
+  background: var(--cream-bg);
+  color: var(--text-dark);
+  padding: 160px 7% 120px;
   font-family: "Inter", sans-serif;
   position: relative;
   min-height: 100vh;
 }
 
-/* Custom Gaming Cursor - Only shows on image hover */
+/* Custom Gaming Cursor - UPDATED FOR LIGHT THEME */
 .custom-cursor {
   position: fixed;
-  width: var(--cursor-size);
-  height: var(--cursor-size);
+  width: 50px;
+  height: 50px;
   pointer-events: none;
   z-index: 9999;
   display: flex;
@@ -35,22 +36,21 @@
 .cursor-circle {
   width: 100%;
   height: 100%;
-  border: 2px solid #ffffff;
+  border: 2px solid #000000;
   border-radius: 50%;
   position: absolute;
   animation: cursorPulse 2s infinite;
-  background: rgba(0, 0, 0, 0.8);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .cursor-text {
-  color: #ffffff;
+  color: #000000;
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1.5px;
   position: relative;
   z-index: 2;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
 }
 
 @keyframes cursorPulse {
@@ -64,87 +64,87 @@
   }
 }
 
-/* NORMAL CURSOR STAYS - Only override for image links */
-.proj-media-link {
-  cursor: pointer !important;
-}
-
-/* HEADER */
+/* HEADER - MORE MINIMAL */
 .proj-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 80px;
+  margin-bottom: 100px;
 }
 
 .proj-title {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: 8.5rem;
   font-weight: 700;
-  letter-spacing: -2px;
+  letter-spacing: -3px;
   line-height: 0.9;
   margin: 0;
 }
 
 .proj-sub {
   max-width: min(500px, 45%);
+  margin-top: 20px;
 }
 
 .proj-mini {
   opacity: 0.6;
   margin-bottom: 12px;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
+  font-size: 0.8rem;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
 }
 
 .proj-desc {
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  font-size: 1.1rem;
   line-height: 1.7;
   opacity: 0.85;
   margin: 0;
+  font-weight: 400;
 }
 
-/* PROJECT LIST */
+/* PROJECT LIST - CLEANER */
 .proj-list {
   display: flex;
   flex-direction: column;
-  gap: 140px;
+  gap: 120px;
 }
 
-/* SINGLE PROJECT */
+/* SINGLE PROJECT - ULTRA MINIMAL */
 .proj-item {
   display: flex;
-  gap: clamp(30px, 5vw, 50px);
+  gap: 60px;
   align-items: flex-start;
 }
 
-/* LEFT NUMBER */
+/* LEFT NUMBER - BIGGER & CLEANER */
 .proj-left {
   position: sticky;
-  top: 120px;
-  width: min(200px, 20%);
+  top: 140px;
+  width: min(180px, 15%);
 }
 
 .proj-left h1 {
-  font-size: clamp(4rem, 10vw, 10rem);
+  font-size: 10rem;
   line-height: 0.8;
-  opacity: 0.5;
+  opacity: var(--number-opacity);
   font-weight: 700;
   margin: 0;
+  letter-spacing: -3px;
 }
 
-/* RIGHT CONTENT */
+/* RIGHT CONTENT - REFINED */
 .proj-right {
   flex: 1;
 }
 
-/* MEDIA WRAPPER */
+/* MEDIA WRAPPER - MORE ELEGANT */
 .proj-media-wrapper {
   width: 100%;
-  height: 75vh;
+  height: 70vh;
   overflow: hidden;
-  border-radius: 16px;
+  border-radius: 12px;
   position: relative;
-  background: #111;
+  background: var(--warm-grey);
+  border: 1px solid var(--divider-subtle);
 }
 
 .proj-media-link {
@@ -167,17 +167,17 @@
 }
 
 .proj-media-link:hover .proj-media {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
-/* Media Overlay */
+/* Media Overlay - MINIMAL */
 .media-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -201,16 +201,16 @@
 }
 
 .view-text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  letter-spacing: 3px;
-  margin-bottom: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
   display: block;
   text-transform: uppercase;
 }
 
 .arrow-icon {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   animation: bounce 2s infinite;
   font-weight: 300;
 }
@@ -220,34 +220,48 @@
     transform: translateX(0);
   }
   40% {
-    transform: translateX(10px);
+    transform: translateX(8px);
   }
   60% {
-    transform: translateX(5px);
+    transform: translateX(4px);
   }
 }
 
-/* Project Info */
+/* Project Info - CLEANER TYPOGRAPHY */
 .proj-name {
-  margin-top: 30px;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
+  margin-top: 35px;
+  font-size: 2.5rem;
+  font-weight: 600;
   line-height: 1.2;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Add tiny project number before title */
+.proj-name::before {
+  content: attr(data-number);
+  font-size: 1.8rem;
+  opacity: var(--number-opacity);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
 }
 
 .proj-text {
-  margin-top: 15px;
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
-  opacity: 0.85;
-  max-width: 700px;
+  margin-top: 20px;
+  font-size: 1.15rem;
+  opacity: 0.75;
+  max-width: 600px;
   line-height: 1.7;
+  font-weight: 400;
 }
 
-/* Links */
+/* Links - MORE SUBTLE */
 .proj-links {
-  margin-top: 25px;
+  margin-top: 30px;
   display: flex;
-  gap: 20px;
+  gap: 15px;
   flex-wrap: wrap;
 }
 
@@ -255,32 +269,96 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  color: var(--text);
+  color: var(--text-dark);
   opacity: 0.7;
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 8px 16px;
-  border: 1px solid rgba(218, 216, 207, 0.2);
+  padding: 10px 20px;
+  border: 1px solid var(--divider-light);
   border-radius: 6px;
   font-size: 0.9rem;
-  cursor: pointer;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .proj-links a:hover {
   opacity: 1;
   transform: translateY(-2px);
-  border-color: rgba(218, 216, 207, 0.5);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--text-dark);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* View All Projects Button - MINIMAL */
+.view-all-projects {
+  display: flex;
+  justify-content: center;
+  margin-top: 100px;
+}
+
+.github-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 18px 40px;
+  background: transparent;
+  border: 1.5px solid var(--text-dark);
+  color: var(--text-dark);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.github-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: var(--text-dark);
+  transition: left 0.3s ease;
+  z-index: -1;
+}
+
+.github-btn:hover {
+  color: var(--cream-bg);
+  transform: translateY(-2px);
+}
+
+.github-btn:hover::before {
+  left: 0;
+}
+
+.github-btn:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+.arrow-icon {
+  transition: transform 0.3s ease;
+  font-size: 1rem;
 }
 
 /* RESPONSIVE DESIGN */
 @media (max-width: 1200px) {
   .proj-section {
-    padding: 100px 5%;
+    padding: 140px 5% 100px;
   }
   
   .proj-media-wrapper {
-    height: 65vh;
+    height: 60vh;
+  }
+  
+  .proj-title {
+    font-size: 7rem;
+  }
+  
+  .proj-left h1 {
+    font-size: 8rem;
   }
 }
 
@@ -300,13 +378,17 @@
   }
   
   .proj-left h1 {
-    font-size: 5rem;
+    font-size: 6rem;
+  }
+  
+  .proj-name {
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 768px) {
   .proj-section {
-    padding: 80px 5%;
+    padding: 100px 5% 80px;
   }
   
   .custom-cursor {
@@ -314,45 +396,56 @@
   }
   
   .proj-list {
-    gap: 100px;
+    gap: 80px;
   }
   
   .proj-item {
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
   }
   
   .proj-media-wrapper {
     height: 50vh;
-    border-radius: 12px;
+    border-radius: 8px;
   }
   
   .proj-left h1 {
     font-size: 4rem;
   }
   
+  .proj-name {
+    font-size: 1.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .proj-name::before {
+    font-size: 1.4rem;
+  }
+  
   .proj-links {
-    gap: 12px;
+    gap: 10px;
   }
   
   .proj-links a {
-    padding: 6px 12px;
+    padding: 8px 16px;
     font-size: 0.85rem;
   }
 }
 
 @media (max-width: 480px) {
   .proj-section {
-    padding: 60px 5%;
+    padding: 80px 5% 60px;
   }
   
   .proj-title {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
+    letter-spacing: -1px;
   }
   
   .proj-media-wrapper {
     height: 40vh;
-    border-radius: 8px;
   }
   
   .proj-left h1 {
@@ -360,16 +453,21 @@
   }
   
   .proj-name {
-    margin-top: 20px;
+    margin-top: 25px;
+    font-size: 1.5rem;
   }
   
-  .proj-links {
-    flex-direction: column;
-    align-items: flex-start;
+  .proj-text {
+    font-size: 1rem;
   }
   
-  .proj-links a {
-    width: fit-content;
+  .view-all-projects {
+    margin-top: 60px;
+  }
+  
+  .github-btn {
+    padding: 15px 30px;
+    font-size: 0.95rem;
   }
 }
 
@@ -381,85 +479,5 @@
   
   .media-overlay {
     display: none;
-  }
-}
-
-/* View All Projects Button */
-.view-all-projects {
-  display: flex;
-  justify-content: center;
-  margin-top: 80px;
-}
-
-.github-btn {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 18px 40px;
-  background: transparent;
-  border: 2px solid var(--text);
-  color: var(--text);
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.github-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--text);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.github-btn:hover {
-  color: var(--bg);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(218, 216, 207, 0.2);
-}
-
-.github-btn:hover::before {
-  left: 0;
-}
-
-.github-btn:hover .arrow-icon {
-  transform: translateX(5px);
-}
-
-.arrow-icon {
-  transition: transform 0.3s ease;
-  font-size: 1rem;
-}
-
-/* Responsive Design for Button */
-@media (max-width: 768px) {
-  .view-all-projects {
-    margin-top: 60px;
-  }
-  
-  .github-btn {
-    padding: 15px 30px;
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .view-all-projects {
-    margin-top: 50px;
-  }
-  
-  .github-btn {
-    padding: 12px 25px;
-    font-size: 0.95rem;
-    gap: 10px;
   }
 }

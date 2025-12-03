@@ -11,16 +11,13 @@ function Contact() {
   const titleRef = useRef(null);
   const inputsRef = useRef([]);
   const btnRef = useRef(null);
-  const bgVideoRef = useRef(null);
 
-  // helper to collect inputs
   const addInput = (el) => {
     if (el && !inputsRef.current.includes(el)) inputsRef.current.push(el);
   };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // section fade-in
       gsap.from(sectionRef.current, {
         opacity: 0,
         y: 60,
@@ -32,7 +29,6 @@ function Contact() {
         },
       });
 
-      // title pop
       gsap.from(titleRef.current, {
         y: -30,
         opacity: 0,
@@ -40,7 +36,6 @@ function Contact() {
         ease: "power3.out",
       });
 
-      // form pop with subtle scale
       gsap.from(formRef.current, {
         scale: 0.96,
         y: 20,
@@ -50,7 +45,6 @@ function Contact() {
         ease: "back.out(1.2)",
       });
 
-      // stagger inputs
       gsap.from(inputsRef.current, {
         y: 18,
         opacity: 0,
@@ -60,7 +54,6 @@ function Contact() {
         ease: "power2.out",
       });
 
-      // button reveal
       gsap.from(btnRef.current, {
         y: 10,
         opacity: 0,
@@ -68,20 +61,6 @@ function Contact() {
         delay: 0.9,
         ease: "back.out(1.1)",
       });
-
-      // subtle slow parallax on background video (very light)
-      if (bgVideoRef.current) {
-        ScrollTrigger.create({
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: 0.6,
-          onUpdate(self) {
-            const v = gsap.utils.mapRange(0, 1, -6, 6, self.progress);
-            gsap.to(bgVideoRef.current, { y: v, duration: 0.6, overwrite: true });
-          },
-        });
-      }
     }, sectionRef);
 
     return () => ctx.revert();
@@ -89,17 +68,6 @@ function Contact() {
 
   return (
     <section className="contact-section" ref={sectionRef} aria-label="Contact section">
-      {/* Subtle background video (local path) */}
-      <video
-        ref={bgVideoRef}
-        className="contact-bg-video"
-        src="/mnt/data/Screen Recording 2025-11-23 145113.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-      />
-
       <h1 className="contact-title" ref={titleRef}>
         BUILDING SOMETHING COOL? <span className="break">LET'S TALK</span>
       </h1>
@@ -117,7 +85,7 @@ function Contact() {
             ref={addInput}
             name="name"
             type="text"
-            placeholder="Drop a name"
+            placeholder="Your name"
             required
             aria-label="Your name"
           />
@@ -126,7 +94,7 @@ function Contact() {
             ref={addInput}
             name="email"
             type="email"
-            placeholder="Wanna hear back? Add your email"
+            placeholder="Your email"
             required
             aria-label="Your email"
           />
@@ -134,7 +102,7 @@ function Contact() {
           <textarea
             ref={addInput}
             name="message"
-            placeholder="Say hello or drop a note..."
+            placeholder="Your message..."
             aria-label="Message"
             required
           />
